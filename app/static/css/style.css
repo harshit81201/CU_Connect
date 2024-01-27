@@ -1,0 +1,302 @@
+/* Reset some basic elements for consistent styling across browsers */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Set the font for the entire body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff; /* White background as per the theme */
+}
+
+/* Style the navigation bar */
+.navbar {
+    background-color: #007bff; /* Blue color matching the theme */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
+    z-index: 1030; /* Keeps the navbar on top of other elements */
+}
+
+/* Brand name in the navbar */
+.navbar-brand {
+    color: white;
+}
+
+/* Style the hero section with a background image */
+.hero-section {
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* Hero section heading */
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* Card styling for the description */
+.description-card {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white for legibility */
+    border-radius: 15px; /* Rounded corners for the card */
+    padding: 20px;
+    margin: 0 auto; /* Center the card */
+    display: inline-block; /* Size according to content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style the heading inside the card */
+.description-card h1 {
+    color: #333; /* Darker text for contrast */
+    margin-bottom: 15px;
+}
+
+/* Style the paragraph inside the card */
+.description-card p {
+    color: #555; /* Darker text for contrast */
+    margin-bottom: 25px;
+}
+
+/* Custom button styling */
+.custom-button {
+    background-color: #fff; /* Initial color white to match the card */
+    color: #007bff; /* Text color blue to stand out */
+    border: 2px solid #007bff; /* Blue border */
+    transition: all 0.3s ease; /* Smooth transition for background and transform */
+    margin-top: 10px; /* Margin at the top to separate from the text */
+}
+
+/* Button hover and focus state */
+.custom-button:hover, .custom-button:focus {
+    background-color: #007bff; /* Change background to blue */
+    color: white; /* Text color white for contrast */
+    transform: translateY(-5px); /* Move the button up slightly on hover */
+}
+
+/* Features Section */
+.features-section {
+    padding: 50px 0;
+    background-color: #e9ecef; /* A soft background color */
+}
+
+.feature-item {
+    min-height: 200px; /* Adjust the value based on your tallest card */
+    background: #ffffff; /* White background for the feature cards */
+    border: 1px solid #e1e1e1; /* Light border for the card */
+    border-radius: 10px; /* Rounded corners for the feature cards */
+    padding: 20px;
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    display: block; /* Make the anchor block to allow padding */
+    text-decoration: none; /* No underline for the links */
+    color: inherit; /* The color inherits from the parent for normal state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin: 0 15px 30px; /* Spacing between cards */
+}
+
+.feature-item:hover {
+    transform: translateY(-10px); /* Move up effect on hover */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* More pronounced shadow on hover */
+    color: #fff; /* Change text color on hover */
+    background-color: #007bff; /* Blue background on hover */
+}
+
+.feature-item:hover h3,
+.feature-item:hover p,
+.feature-item:hover .feature-icon i {
+    color: #fff; /* White text for better contrast on hover */
+}
+
+.feature-icon {
+    margin-bottom: 15px;
+    color: #007bff; /* Initial color for icons to match the theme */
+}
+
+.feature-icon i {
+    transition: color 0.3s ease; /* Smooth transition for icon color */
+}
+
+/* Events Section */
+.events-section {
+    padding: 50px 0;
+    background-color: #f8f9fa; /* Light grey background for the section */
+}
+
+.events-card {
+    min-height: 300px; /* Adjust the value based on your tallest card */
+    background: #ffffff; /* White background for the event cards */
+    border: 1px solid #e1e1e1; /* Light border for the card */
+    border-radius: 10px; /* Rounded corners for the event cards */
+    padding: 20px;
+    margin: 0 15px 30px; /* Spacing between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Cursor as pointer */
+    display: flex; /* Align content of cards */
+    flex-direction: column; /* Stack the card content vertically */
+    justify-content: center; /* Center content vertically */
+    text-align: center; /* Center text */
+  }
+
+.events-card h3 {
+    color: #007bff; /* Blue color to match the theme */
+}
+
+.events-card p {
+    color: #555; /* Dark grey color for the paragraph */
+}
+
+.events-card:hover {
+    transform: translateY(-10px); /* Move up effect on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+    background-color: #007bff; /* Blue background to match the theme */
+    color: white; /* White text for better contrast */
+  }
+
+.events-card:hover h3,
+.events-card:hover p {
+  color: white; /* White text on hover */
+}
+
+.modal-content {
+    padding: 15px;
+    border-radius: 0;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: none;
+    background-color: #0056b3; /* Blue */
+    color: white;
+}
+
+.modal-body {
+    background-color: white;
+}
+
+.modal-body .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="email"],
+.modal-body input[type="password"] {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.modal-body select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.btn-primary {
+    background-color: #0056b3; /* Blue */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 7px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #004494; /* Darker blue */
+}
+
+/* Footer */
+.footer {
+    height: 150px;
+    background: #343a40; /* Dark footer background */
+    color: #686868;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .footer a {
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer a:hover {
+    color: #ffd700; /* Gold color for hover state */
+    text-decoration: none;
+  }
+  
+  .footer ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .footer ul li {
+    display: inline;
+    font-size: 0.8em;
+  }
+  
+  .footer .font-weight-bold {
+    font-weight: bold; /* Make the lead developer's name bold */
+  }
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p.lead {
+        font-size: 1.2rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .description-card {
+        width: 90%; /* Make the card width responsive */
+    }
+
+    .custom-button {
+        padding: 8px 20px; /* Smaller padding on small devices */
+    }
+  
+    .feature-item, .events-card {
+        margin: 15px; /* Adjust margin for smaller devices */
+    }
+
+    .footer p, .footer ul {
+    text-align: center;
+    padding: 10px 0; /* Add some padding for better spacing */
+  }
+
+  .footer ul li {
+    display: block; /* Stack list items vertically on smaller screens */
+  }
+}
+
+@media (max-width: 991px) {
+    .feature-item, .events-card {
+        margin-bottom: 30px; /* Spacing between items on smaller screens */
+    }
+}
+
+/* Additional padding to body to account for the fixed navbar height */
+body {
+    padding-top: 70px; /* Adjust this value if the height of your navbar changes */
+}

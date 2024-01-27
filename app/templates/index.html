@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU Connect</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- ... existing code ... -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand" href="{{ url_for('main.index') }}">CU Connect</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                      <a href="{{ url_for('main.logout') }}" class="btn btn-primary">Logout</a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">Register</button>
+                  </li>
+                  <li class="nav-item">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
+                  </li>
+              {% endif %}
+          </ul>
+      </div>
+    </nav>
+
+<!-- ... existing code ... -->
+
+    <header class="hero-section">
+        <div class="container text-center">
+            <div class="description-card">
+                <h1>Welcome to CU Connect</h1>
+                <p class="lead">Connect with your peers, find project partners, and stay updated with university events!</p>
+                <a href="#" class="btn btn-lg custom-button">Get Started</a>
+            </div>
+        </div>
+    </header>
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ url_for('main.register') }}" method="post">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" required placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" required placeholder="University Email">
+              </div>
+              <div class="form-group">
+                <select name="country_code" class="form-control">
+                  <!-- Add options for country codes here -->
+                  <option value="+1">+1 United States</option>
+                  <option value="+44">+44 United Kingdom</option>
+                  <option value="+91">+91 India</option>
+                </select>
+                <input type="text" name="contact_number" class="form-control" required placeholder="Contact Number">
+              </div>
+              <div class="form-group">
+                <input type="text" name="department" class="form-control" required placeholder="Department">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" required placeholder="Password">
+              </div>
+              <div class="form-group">
+                <input type="password" name="confirm_password" class="form-control" required placeholder="Confirm Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ url_for('main.login') }}" method="post">
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" required placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    <section class="features-section text-center">
+        <div class="container">
+          <div class="row">
+            <!-- Feature Item -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <a href="{{ url_for('main.redirect_to_department_chat') }}" class="feature-item">
+                  <div class="feature-card">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <h3>Department Chat</h3>
+                  <p>Chat within your department for focused discussions and updates.</p>
+                </a>
+            </div>
+            <!-- Feature Item -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <a href="/department-chat" class="feature-item">
+                  <div class="feature-card">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <h3>Chat in University</h3>
+                  <p>Connect with students from other departments for broader perspectives.</p>
+                </a>
+            </div>
+            <!-- Feature Item -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <a href="/department-chat" class="feature-item">
+                  <div class="feature-card">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <h3>Project Collaboration</h3>
+                  <p>Work together on projects with seamless collaboration tools.</p>
+                </a>
+            </div>
+            <!-- Feature Item -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <a href="/department-chat" class="feature-item">
+                  <div class="feature-card">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <h3>Task Manager</h3>
+                  <p>Keep track of your daily tasks and manage your time efficiently.</p>
+                </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Event Details Section -->
+      <section class="events-section text-center py-5">
+        <div class="container">
+          <h2 class="mb-5">Event Details</h2>
+          <div class="row">
+            <!-- Upcoming Events Card -->
+            <div class="col-12 col-md-4 mb-4">
+              <div class="events-card" data-toggle="modal" data-target="#upcomingEventsModal">
+                <h3>Upcoming Events</h3>
+                <p>Don't miss out on what's coming. Stay ahead with the upcoming events.</p>
+              </div>
+            </div>
+            <!-- Ongoing Events Card -->
+            <div class="col-12 col-md-4 mb-4">
+              <div class="events-card" data-toggle="modal" data-target="#ongoingEventsModal">
+                <h3>Ongoing Events</h3>
+                <p>Participate in ongoing activities. Engage, learn, and grow with us.</p>
+              </div>
+            </div>
+            <!-- Past Events Card -->
+            <div class="col-12 col-md-4 mb-4">
+              <div class="events-card" data-toggle="modal" data-target="#pastEventsModal">
+                <h3>Past Events</h3>
+                <p>Take a look at the events of the past 30 days and catch up on what you missed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  <!-- Upcoming Events Modal -->
+  <div class="modal fade" id="upcomingEventsModal" tabindex="-1" aria-labelledby="upcomingEventsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="upcomingEventsModalLabel">Upcoming Events</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Content for upcoming events goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="ongoingEventsModal" tabindex="-1" aria-labelledby="ongoingEventsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="ongoingEventsModalLabel">Ongoing Events</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Content for ongoing events goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Past Events Modal -->
+    <div class="modal fade" id="pastEventsModal" tabindex="-1" aria-labelledby="pastEventsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="pastEventsModalLabel">Past Events</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <!-- Content for past events goes here -->
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-8 text-center text-md-left mb-3 mb-md-0">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                  <a href="#" class="text-white">About</a>
+                </li>
+                <li class="list-inline-item">&sdot;</li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-white">Contact</a>
+                </li>
+                <li class="list-inline-item">&sdot;</li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-white">Terms of Use</a>
+                </li>
+                <li class="list-inline-item">&sdot;</li>
+                <li class="list-inline-item">
+                  <a href="#" class="text-white">Privacy Policy</a>
+                </li>
+              </ul>
+              <p class="text-muted small mb-0">&copy; CU Connect 2023. All Rights Reserved.</p>
+            </div>
+            <div class="col-12 col-md-4 text-center text-md-right">
+              <p class="mb-0 text-white">Developed by: <a href="https://github.com/harshit81201" class="text-white font-weight-bold">Harshit Kumar</a>, <b>Shruti Narad</b>, Aditya Singh, Arihant Jain, Gurpreet Singh</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
